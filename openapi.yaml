@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: reprex 
+  description: This specification is just for demonstrating a bug in Azure APIM. 
+  version: 0.0.0
+  contact:
+    name: Peder Landsverk
+    email: peder.landsverk@soprasteria.com
+paths: 
+  /:
+    get:
+      tags: []
+      summary: Dummy path.
+      responses:
+        "200":
+          description: Everything went well.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  body: 
+                    type: string
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+        "500":
+          description: Something went terribly wrong!
+      parameters:
+        - $ref: "#/components/parameters/testBadParam"
+
+components:
+  parameters:
+    testBadParam:
+      name: badParam
+      in: query
+      description: Makes APIM emit an invalid OpenAPI specification. 
+      style: form
+      explode: false
+      schema:
+        type: array
+        items:
+          type: string
