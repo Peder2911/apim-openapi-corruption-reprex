@@ -1,0 +1,51 @@
+openapi: 3.0.1
+info:
+  title: Reprex API
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://apimbugreprex-apim.azure-api.net/reprex
+paths:
+  /:
+    get:
+      summary: Dummy path.
+      description: Dummy path.
+      operationId: get
+      parameters:
+        - name: badParam
+          in: query
+          description: Makes APIM emit an invalid OpenAPI specification.
+          schema:
+            type: array
+      responses:
+        '200':
+          description: Everything went well.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  body:
+                    type: string
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+              example:
+                body: string
+                headers: { }
+        '500':
+          description: Something went terribly wrong!
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

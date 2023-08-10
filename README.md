@@ -29,6 +29,6 @@ parameters:
 
 ```
 
-To reproduce this issue, apply the Terraform module in this repository. The resulting APIM resource will emit a bad OpenAPI specification when queried in the developer portal.
+To reproduce this issue, apply the Terraform module in this repository. The resulting APIM resource will emit a bad OpenAPI specification when queried in the developer portal. The input can be found in [this file](./openapi.yaml), and the resulting bad specification can be found in [this file](./output.yaml). The output file does not validate with for example [https://editor.swagger.io](https://editor.swagger.io)
 
-Please continue the discussion in the Issues tab on this repository to resolve.
+Please continue the discussion in the Issues tab on this repository to resolve, or reach out to me on Teams (peder.landsverk@soprasteria.com).
